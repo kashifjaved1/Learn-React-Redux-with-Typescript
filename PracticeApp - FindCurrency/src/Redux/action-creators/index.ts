@@ -12,17 +12,23 @@ export const searchCurrencies = (searchTerm: string) => {
         })
 
         try {
-            const {data} = await axios.get('https://freetestapi.com/api/v1/currencies?search', {
+            const {data} = await axios.get('https://freetestapi.com/api/v1/currencies?', {
                 params: {
-                    query: searchTerm
+                    search: searchTerm
                 }
             });
 
-            const currency = data.objects.map((result: any) => {
+            console.log("Hurray! Got some data: " + data);
+            const currency : PayloadType = data.map((result: any) => {
                 console.log(result);
                 
                 return {
-                    name: result.name
+                    name: result.name,
+                    code: result.code,
+                    symbol: result.symbol,
+                    exchange_rate: result.exchange_rate,
+                    countries: result.countries.map((c: string) => c),
+                    description: result.description
                 }
             });
 

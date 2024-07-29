@@ -6,7 +6,7 @@ const App = () => {
     return <Provider store={store}>
         <div>
             <h1>
-                Search a currency
+                Find Currency
             </h1>
             <Currencies />
         </div>

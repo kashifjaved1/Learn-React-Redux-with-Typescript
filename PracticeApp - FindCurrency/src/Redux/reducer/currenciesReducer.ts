@@ -2,19 +2,19 @@ import { Action } from "../actions";
 import { ActionType } from "../types/actionTypes";
 import { PayloadType } from "../types/payloadType";
 
-interface CurrenciesState {
+export interface CurrenciesState {
     loading: boolean;
-    data: PayloadType | null;
+    data: PayloadType | any;
     error: string | null;
 }
 
-const initialState = {
+const initialState: CurrenciesState = {
     loading: false,
     data: null,
     error: null
 }
 
-const currencyReducer = (state: CurrenciesState = initialState, action: Action) : CurrenciesState => {
+const currencyReducer = (state = initialState, action: Action) : CurrenciesState => {
     switch (action.type) {
         case ActionType.SEARCH_CURRENCY:
             return {loading: true, data: null, error: null};
